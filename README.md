@@ -2,7 +2,7 @@
 
 ## 環境構築
 Dockerビルド
-　1.git clone 
+　1.git clone git@github.com:mami-kbb/contact-form.git
   2.docker-compose uo -d --build
   *MySQLはOSによって起動しない場合があるので、どれぞれのPCに合わせて docker-compose.yml ファイルを編集してください。
 
@@ -14,13 +14,15 @@ Dockerビルド
  5.php artisan migrate
  6.php artisan db:seed
 
- ## 使用技術
+ ## 使用技術(実行環境)
  ・nginx:1.21.1
  ・PHP:8.1-fpm
  ・Laravel
  ・MySQL:8.0.26
  ・phpmyadmin/phpmyadmin
-
+ 
+## ER図
+ 
 ## URL
 ・開発環境：http://localhost/
 ・phpMyAdminhttp:/localhost:8080/
