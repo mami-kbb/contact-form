@@ -19,8 +19,7 @@ class ContactController extends Controller
 
     public function confirm(ContactRequest $request)
     {
-        $contact = new Contact($request->only(['last_name', 'first_name', 'gender', 'email', 'address', 'building', 'category_id', 'detail']));
-        $contact->tel = $request->first_tel . $request->second_tel . $request->third_tel;
+        $contact = $request->all();
 
         $category = Category::find($contact['category_id']);
         $contact['category_name'] = $category ? $category->content : '';
@@ -30,10 +29,10 @@ class ContactController extends Controller
 
     public function store(ContactRequest $request)
     {
-        $contact = $request->only(['last_name', 'first_name', 'gender', 'email', 'tel', 'address', 'building', 'category_id', 'detail']);
+        $contact = $request->all();
         Contact::create($contact);
 
-        return redirect()->route('thanks');
+        return view('thanks');
     }
 
     public function thanks()

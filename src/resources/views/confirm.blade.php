@@ -9,20 +9,27 @@
     <div class="confirm__heading">
         <h2>Confirm</h2>
     </div>
-    <form action="/contacts" class="form" method="post">
+    <form action="/thanks" class="form" method="post">
         @csrf
         <div class="confirm-table">
             <table class="confirm-table__inner">
                 <tr class="confirm-table__row">
                     <th class="confirm-table__header">お名前</th>
                     <td class="confirm-table__text">
-                        <input type="text" name="last_name" value="{{ $contact->getDetail() }}" readonly>
+                        <input type="text" name="last_name" value="{{ $contact['last_name'] }}" readonly>
                     </td>
                 </tr>
                 <tr class="confirm-table__row">
                     <th class="confirm-table__header">性別</th>
                     <td class="confirm-table__text">
-                        <input type="text" name="gender" value="{{ $contact->gender_label }}" readonly>
+                        @if($contact['gender'] == 1)
+                        男性
+                        @elseif($contact['gender'] == 2)
+                        女性
+                        @else
+                        その他
+                        @endif
+                        <input type="hidden" name="gender" value="{{ $contact['gender'] }}" readonly>
                     </td>
                 </tr>
                 <tr class="confirm-table__row">
@@ -34,7 +41,7 @@
                 <tr class="confirm-table__row">
                     <th class="confirm-table__header">電話番号</th>
                     <td class="confirm-table__text">
-                        <input type="tel" name="tel" value="{{ $contact->tel }}" readonly>
+                        <input type="tel" name="tel" value= "{{ $contact['first_tel'] }}{{ $contact['second_tel'] }}{{ $contact['third_tel'] }}" readonly>
                     </td>
                 </tr>
                 <tr class="confirm-table__row">
