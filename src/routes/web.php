@@ -21,7 +21,11 @@ use App\Http\Controllers\Auth\LoginController;
 Route::get('/', [ContactController::class,'index']);
 Route::get('/confirm', [ContactController::class, 'confirm'])->name('contact.confirm');
 Route::post('/confirm', [ContactController::class, 'confirm']);
-Route::post('/thanks', [ContactController::class, 'store']);
+Route::post('/contacts', [ContactController::class, 'store']);
+Route::get('/thanks', function () {
+    return view('thanks');
+})->name('thanks');
+Route::get('/thanks', [ContactController::class, 'thanks'])->name('contact.thanks');
 Route::middleware('auth')->group(function () {
     Route::get('/admin', [AuthController::class, 'index']);
 });

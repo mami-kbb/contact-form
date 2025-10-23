@@ -30,13 +30,14 @@ class ContactController extends Controller
 
     public function store(ContactRequest $request)
     {
-        if($request->has('back')){
-            return redirect('/')->withInput();
-        }
-
         $contact = $request->only(['last_name', 'first_name', 'gender', 'email', 'tel', 'address', 'building', 'category_id', 'detail']);
         Contact::create($contact);
 
+        return redirect()->route('thanks');
+    }
+
+    public function thanks()
+    {
         return view('thanks');
     }
 
